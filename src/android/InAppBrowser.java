@@ -1217,7 +1217,7 @@ public class InAppBrowser extends CordovaPlugin {
                 }
             }
 
-            if (url.startsWith("lacroix:")) {
+            if (url.startsWith("otvp:")) {
                 try {
                     Intent intent = new Intent(Intent.ACTION_VIEW);
                     intent.setData(Uri.parse(url));
@@ -1226,8 +1226,9 @@ public class InAppBrowser extends CordovaPlugin {
                 } catch (android.content.ActivityNotFoundException e) {
                     LOG.e(LOG_TAG, "Error with " + url + ": " + e.toString());
                     Intent marketIntent = new Intent(Intent.ACTION_VIEW);
-                    marketIntent.setData(Uri.parse("market://details?id=com.groupebayard.lacroix"));
+                    marketIntent.setData(Uri.parse("market://details?id=com.orange.owtv"));
                     cordova.getActivity().startActivity(marketIntent);
+                    override = true;
                 }
             } else if (url.startsWith(WebView.SCHEME_TEL)) {
                 try {
