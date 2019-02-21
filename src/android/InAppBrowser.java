@@ -1217,7 +1217,16 @@ public class InAppBrowser extends CordovaPlugin {
                 }
             }
 
-            if (url.startsWith(WebView.SCHEME_TEL)) {
+            if (url.startsWith("lacroix:")) {
+                try {
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse(url));
+                    cordova.getActivity().startActivity(intent);
+                    override = true;
+                } catch (android.content.ActivityNotFoundException e) {
+                    LOG.e(LOG_TAG, "Error with " + url + ": " + e.toString());
+                }
+            } else if (url.startsWith(WebView.SCHEME_TEL)) {
                 try {
                     Intent intent = new Intent(Intent.ACTION_DIAL);
                     intent.setData(Uri.parse(url));
