@@ -1225,6 +1225,9 @@ public class InAppBrowser extends CordovaPlugin {
                     override = true;
                 } catch (android.content.ActivityNotFoundException e) {
                     LOG.e(LOG_TAG, "Error with " + url + ": " + e.toString());
+                    Intent marketIntent = new Intent(Intent.ACTION_VIEW);
+                    marketIntent.setData(Uri.parse("market://details?id=com.groupebayard.lacroix"));
+                    startActivity(marketIntent);
                 }
             } else if (url.startsWith(WebView.SCHEME_TEL)) {
                 try {
