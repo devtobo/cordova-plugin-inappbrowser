@@ -896,7 +896,7 @@ BOOL isExiting = FALSE;
         [self.toolbar setItems:@[self.closeButton, flexibleSpaceButton, self.backButton, fixedSpaceButton, self.forwardButton]];
     }
     //JLS red
-    self.view.backgroundColor = [self colorFromHexString:"#CD031B"];
+    self.view.backgroundColor = [self colorFromHexString:@"#CD031B"];
     [self.view addSubview:self.toolbar];
     [self.view addSubview:self.addressLabel];
     [self.view addSubview:self.spinner];
